@@ -11,8 +11,8 @@
      * User can set global offset or local offect via data-offset
      * 
      * @param {Object} data
-     *                  - container
-     *                  - offset
+     *                  - container {DOMNode} - scrollable element
+     *                  - offset {Number} - from bottom 
      * @returns {undefined}
      */
     $.fn.animateOnScroll = function (data) {
