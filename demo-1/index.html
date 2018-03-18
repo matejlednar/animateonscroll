@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="../animation-on-scroll.js"></script>
+        <style>
+            .container  {
+                height: 100vh;
+            }
+            .half {
+                height: 50vh;
+            }
+            .hide {
+                display : none;
+            }
+            body {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+        </style>
+    </head>   
+    <body>
+        <h1>Animation on scroll with Animate.css (https://daneden.github.io/animate.css/)</h1>
+        <div class="container">
+            <h1 data-animation="bounceIn">Page 1</h1>
+        </div>
+        <div class="container">
+            <h1 data-animation="flash">Page 2</h1>
+        </div>
+        <div class="container">
+            <h1 data-animation="pulse">Page 3</h1>
+        </div>
+        <div class="container">
+            <h1 data-animation="slideInUp">Page 4</h1>
+        </div>
+        <div class="container">
+            <h1 data-animation="zoomIn">Page 5</h1>
+        </div>
+        <div class="container half">
+            <h1 data-animation="bounceIn">Page 6a</h1>
+        </div>
+        <div class="container half">
+            <h1 data-animation="zoomOutUp">Page 6b</h1>
+        </div>
+
+        <script>
+            $(document).ready(function ($) {
+                $().animateOnScroll();
+
+            });
+        </script>
+    </body>
+</html>
