@@ -1,9 +1,9 @@
 # Animate on scroll
 Animate on scroll - elements animation when user is scrolling the web page
 
-Animate on scroll with Animate.css (https://daneden.github.io/animate.css/)
-Animation with global and local offset
-Animation inside scrollable element
+Animate on scroll with Animate.css (https://daneden.github.io/animate.css/) <br>
+Animation with global and local offset<br>
+Animation inside scrollable element<br>
 
 ## HTML - use data-animation attribute with animation name
 
@@ -27,6 +27,8 @@ $(document).ready(function ($) {
 });
 ````  
 ## JavaScript advanced configuration
+User can set scrollable element and global offset programatically<br>
+Use data-offset for local offset inside HTML element.
 ````
 $(document).ready(function ($) {
      var args = {
