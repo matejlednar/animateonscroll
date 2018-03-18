@@ -1,6 +1,7 @@
 /**
+ * Animate on Scroll - using Animate.css
  * 
- * @param {Object} $
+ * @param {Object} $ - jQuery
  * @returns {undefined}
  */
 (function ($) {
