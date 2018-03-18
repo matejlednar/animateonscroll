@@ -1,4 +1,4 @@
-# animateonscroll
+# Animate on scroll
 Animate on scroll - elements animation when user is scrolling page
 
 Animate on scroll with Animate.css (https://daneden.github.io/animate.css/)
