@@ -8,7 +8,11 @@
     /**
      * Animate on scroll
      * 
+     * User can set global offset or local offect via data-offset
+     * 
      * @param {Object} data
+     *                  - container
+     *                  - offset
      * @returns {undefined}
      */
     $.fn.animateOnScroll = function (data) {
@@ -19,8 +23,8 @@
 
             container: container,
             nodes: null,
-            containerHeight: container.innerHeight,
-
+            containerHeight: container.innerHeight ? container.innerHeight : container.getBoundingClientRect().height,
+            correction: data.offset ? -(data.offset) : 0,
             /**
              * Find elements with animation
              * 
@@ -45,18 +49,40 @@
             checkPosition: function () {
 
                 var animation;
-                var nodes = this.nodes;
+                var posFromTop;
+                var nodes = this.nodes, node;
                 var containerHeight = this.containerHeight;
+                var correction;
+
+                if (this.container != window) {
+                    correction = this.container.offsetTop + correction;
+                }
 
                 for (var i = 0; i < nodes.length; i++) {
 
-                    var posFromTop = nodes[i].getBoundingClientRect().top;
+                    node = nodes[i];
+                    posFromTop = node.getBoundingClientRect().top;
 
-                    if (posFromTop - containerHeight <= 0) {
-                        if (nodes[i].dataset.animation) {
-                            animation = nodes[i].dataset.animation;
-                            delete nodes[i].dataset.animation;
-                            nodes[i].classList.add(animation);
+                    // global offset
+                    correction = this.correction;
+
+                    if (this.container != window) {
+                        correction = this.container.offsetTop + correction;
+                    }
+
+                    // local offset
+                    if (node.dataset.offset) {
+                        correction = -(node.dataset.offset);
+                        if (this.container != window) {
+                            correction = this.container.offsetTop + correction;
+                        }
+                    }
+
+                    if (posFromTop - containerHeight - correction <= 0) {
+                        if (node.dataset.animation) {
+                            animation = node.dataset.animation;
+                            delete node.dataset.animation;
+                            node.classList.add(animation);
                         }
                     }
                 }
@@ -67,7 +93,7 @@
              * @returns {undefined}
              */
             resize: function () {
-                this.containerHeight = container.innerHeight;
+                this.containerHeight = this.container.innerHeight ? this.container.innerHeight : this.container.getBoundingClientRect().height;
                 this.checkPosition();
             },
             /**
@@ -80,12 +106,6 @@
                 $(container).on('resize', $.proxy(this.resize, this));
             }
         };
-
-        /* Params
-         * - firstAnimation - delay time
-         * - changeViewPosition - start animate soon or later - number (length in pixels)
-         * - containerElement - if content is in another scrollable element
-         */
 
         app.findAnimations();
         app.addEventHandlers();

@@ -33,7 +33,7 @@
     </head>   
     <body>
         <h1>Animate on scroll with Animate.css (https://daneden.github.io/animate.css/)</h1>
-        <h2>Animation in nested scrollable element</h2>
+        <h2>Animation in nested scrollable element with offset</h2>
         <div class="main-container">
             <div class="container">
                 <h1 data-animation="bounceIn">Page 1</h1>
@@ -69,7 +69,8 @@
         <script>
             $(document).ready(function ($) {
                 var args = {
-                    container: $(".main-container")[0]
+                    container: $(".main-container")[0],
+                    offset : 300
                 };
                 $().animateOnScroll(args);
 
