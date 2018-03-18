@@ -1,6 +1,10 @@
 /**
  * Animate on Scroll - using Animate.css
  * 
+ * Author: Matej Lednár
+ * matejlednar@mldgroup.com
+ * https://github.com/matejlednar
+ * 
  * @param {Object} $ - jQuery
  * @returns {undefined}
  */
